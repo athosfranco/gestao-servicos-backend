@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Address } from "./Address";
 
 @Entity()
 export class Customer {
@@ -28,6 +30,9 @@ export class Customer {
 
   @Column({ nullable: true })
   tel: string;
+
+  @OneToOne(() => Address, (address) => address.customer)
+  addressInfo: Address;
 
   @Column({ nullable: true })
   birthDate: Date;

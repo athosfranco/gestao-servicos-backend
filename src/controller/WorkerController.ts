@@ -6,7 +6,11 @@ import { Worker } from "../entity/Worker";
 const workerRepository = connection.getRepository(Worker);
 
 export const getWorkers = async (request: Request, response: Response) => {
-  const workers = await workerRepository.find();
+  const workers = await workerRepository.find({
+    relations: {
+      categories: true,
+    },
+  });
   return response.json(workers);
 };
 

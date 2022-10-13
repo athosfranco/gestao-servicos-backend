@@ -2,9 +2,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Category } from "./Category";
 
 @Entity()
 export class Worker {
@@ -38,8 +44,9 @@ export class Worker {
   @Column({ default: true })
   avaliableToWork: boolean;
 
-  @Column()
-  workType: string;
+  @ManyToMany((type) => Category, { eager: true })
+  @JoinTable()
+  categories: Category[];
 
   @CreateDateColumn()
   createdAt: Date;

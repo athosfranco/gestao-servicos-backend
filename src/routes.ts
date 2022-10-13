@@ -1,5 +1,12 @@
 import { Router, Request, Response } from "express";
 import {
+  createCategory,
+  deleteCategory,
+  getCategories,
+  getCategoryById,
+  updateCategory,
+} from "./controller/CategoryController";
+import {
   deleteCustomer,
   getCustomerById,
   getCustomers,
@@ -18,7 +25,7 @@ import {
 const routes = Router();
 
 routes.get("/", (request: Request, response: Response) => {
-  return response.json({ message: "Hello World" });
+  return response.json({ message: "API Desenvolvida por Athos Franco" });
 });
 
 //ROTAS - PRESTADORES DE SERVIÇO
@@ -35,5 +42,12 @@ routes.get("/customers/:id", getCustomerById);
 routes.post("/customers", registerCustomer);
 routes.put("/customers/:id", updateCustomer);
 routes.delete("/customers/:id", deleteCustomer);
+
+//ROTAS - CATEGORIAS
+routes.get("/categories", getCategories);
+routes.get("/categories/:id", getCategoryById);
+routes.post("/categories", createCategory);
+routes.put("/categories/:id", updateCategory);
+routes.delete("/categories/:id", deleteCategory);
 
 export default routes;

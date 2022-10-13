@@ -24,6 +24,7 @@ export const registerCustomer = async (
   const customer = await customerRepository.save(request.body);
   response.json(customer);
 };
+
 export const updateCustomer = async (request: Request, response: Response) => {
   const customer = await customerRepository.update(
     request.params.id,
