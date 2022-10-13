@@ -34,9 +34,8 @@ export class Address {
   @Column()
   estado: string;
 
-  @OneToOne(() => Customer, (customer) => customer.addressInfo, {
+  @OneToOne(() => Customer, (customer) => customer.address, {
     onDelete: "CASCADE",
   })
-  @JoinColumn()
   customer: Customer;
 }

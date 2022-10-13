@@ -25,7 +25,7 @@ import {
 const routes = Router();
 
 routes.get("/", (request: Request, response: Response) => {
-  return response.json({ message: "API Desenvolvida por Athos Franco" });
+  return response.json({ message: "API Desenvolvida por Athos Franco de Sá" });
 });
 
 //ROTAS - PRESTADORES DE SERVIÇO

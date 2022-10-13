@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -31,8 +32,12 @@ export class Customer {
   @Column({ nullable: true })
   tel: string;
 
-  @OneToOne(() => Address, (address) => address.customer)
-  addressInfo: Address;
+  @OneToOne(() => Address, (address) => address.customer, {
+    cascade: true,
+    eager: true,
+  })
+  @JoinColumn()
+  address: Address;
 
   @Column({ nullable: true })
   birthDate: Date;
